@@ -62,9 +62,9 @@ $cromos = selectCromos();
 
                 </ul>
                 <!--BUSCAR-->
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <form class="d-flex" role="buscar">
+                    <input class="form-control me-2" type="buscar" placeholder="buscar" aria-label="buscar">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
                 </form>
 
             </div>
@@ -74,61 +74,40 @@ $cromos = selectCromos();
 
 
 
-
-    <!--PRUEBA PDO-->
-
-
-    <div class="container">
-        <table class="table table-striped">
-            <tr>
-                <th>Identificador</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Imagen</th>
-
-            </tr>
-            <?php foreach ($cromos as $cromo) { ?>
-                <tr>
-                    <td>
-                        <?php echo $cromo['id'] ?>
-                    </td>
-                    <td>
-                        <?php echo $cromo['nombre'] ?>
-                    </td>
-                    <td>
-                        <?php echo $cromo['descripcion'] ?>
-                    </td>
-                    <td>
-                        <?php echo $cromo['imagen'] ?>
-                    </td>
-
-                </tr>
-
-            <?php } ?>
-
-
-        </table>
-
-    </div>
-
-    <!--PRUEBA PDO-->
-
-
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+    <div class="container p-5">
+    <div class="row row-cols-2">
+        <?php foreach ($cromos as $cromo) { ?>
+            <div class="col mb-4">
+                <div class="card h-100">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="<?php echo $cromo['imagen']; ?>" class="card-img-left img-fluid"
+                                alt="<?php echo $cromo['nombre']; ?>">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <?php echo $cromo['nombre']; ?>
+                                </h5>
+                                <p class="card-text"><strong>Tipo:</strong>
+                                    <?php echo $cromo['nombreTipo']; ?>
+                                </p>
+                                <p class="card-text">
+                                    <?php echo $cromo['descripcion']; ?>
+                                </p>
+                                <p class="card-text"><strong>Región:</strong>
+                                    <?php echo $cromo['nombreRegion']; ?>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
     </div>
+</div>
+
+
 </body>
 
 </html>

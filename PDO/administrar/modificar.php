@@ -1,3 +1,10 @@
+<!--PRUEBA PDO-->
+<?php
+require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
+
+$cromos = selectCromos();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,15 +61,66 @@
 
                 </ul>
                 <!--BUSCAR-->
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <form class="d-flex" role="buscar">
+                    <input class="form-control me-2" type="buscar" placeholder="buscar" aria-label="buscar">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
                 </form>
 
             </div>
 
         </div>
     </nav>
+
+
+    
+    <!--PRUEBA PDO-->
+
+
+    <div class="container">
+        <table class="table table-striped">
+            <tr>
+                <th>Identificador</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Región</th>
+                <th>Imagen</th>
+
+            </tr>
+            <?php foreach ($cromos as $cromo) { ?>
+                <tr>
+                    <td>
+                        <?php echo $cromo['id'] ?>
+                    </td>
+                    <td>
+                        <?php echo $cromo['nombre'] ?>
+                    </td>
+                    <td>
+                        <?php echo $cromo['nombreTipo'] ?>
+                    </td>
+                    <td>
+                        <?php echo $cromo['descripcion'] ?>
+                    </td>
+                    <td>
+                        <?php echo $cromo['nombreRegion'] ?>
+                    </td>
+                    <td>
+                        <?php echo $cromo['imagen'] ?>
+                    </td>
+
+
+
+                </tr>
+
+            <?php } ?>
+
+
+        </table>
+
+    </div>
+
+    <!--PRUEBA PDO-->
+
 </body>
 
 </html>

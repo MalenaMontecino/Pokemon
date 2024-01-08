@@ -1,3 +1,10 @@
+<!--PRUEBA PDO-->
+<?php
+require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
+// Obtener tipos de la base de datos (asegúrate de tener la conexión y la consulta adecuadas)
+$tipos = getTiposFromDatabase();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +39,8 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!--HOME-->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
                     </li>
                     <!--LINK
             <li class="nav-item">
@@ -54,9 +62,9 @@
 
                 </ul>
                 <!--BUSCAR-->
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <form class="d-flex" role="buscar">
+                    <input class="form-control me-2" type="buscar" placeholder="buscar" aria-label="buscar">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
                 </form>
 
             </div>
@@ -78,79 +86,29 @@
         <!-- tipo -->
 
         <label for="tipo" class="form-label mb-3">Tipo</label> <br>
+        <?php
+            function generateTypeCheckboxes($tipos)
+            {
+                $count = 0;
 
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-            <label class="form-check-label" for="inlineCheckbox1">Agua</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-            <label class="form-check-label" for="inlineCheckbox2">Fuego</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-            <label class="form-check-label" for="inlineCheckbox3">Planta</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-            <label class="form-check-label" for="inlineCheckbox4">Eléctrico</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5">
-            <label class="form-check-label" for="inlineCheckbox5">Lucha</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6">
-            <label class="form-check-label" for="inlineCheckbox6">Volador</label>
-        </div> <br>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7">
-            <label class="form-check-label" for="inlineCheckbox7">Tierra</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option8">
-            <label class="form-check-label" for="inlineCheckbox8">Roca</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9">
-            <label class="form-check-label" for="inlineCheckbox9">Veneno</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="option10">
-            <label class="form-check-label" for="inlineCheckbox10">Psíquico</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox11" value="option11">
-            <label class="form-check-label" for="inlineCheckbox11">Fantasma</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox12" value="option12">
-            <label class="form-check-label" for="inlineCheckbox12">Bicho</label>
-        </div> <br>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox13" value="option13">
-            <label class="form-check-label" for="inlineCheckbox13">Normal</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox14" value="option14">
-            <label class="form-check-label" for="inlineCheckbox14">Hielo</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox15" value="option15">
-            <label class="form-check-label" for="inlineCheckbox15">Siniestro</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox16" value="option16">
-            <label class="form-check-label" for="inlineCheckbox16">Hada</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox17" value="option17">
-            <label class="form-check-label" for="inlineCheckbox17">Acero</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox18" value="option18">
-            <label class="form-check-label" for="inlineCheckbox18">Dragón</label>
-        </div>
+                foreach ($tipos as $tipo) {
+                    echo '<div class="form-check form-check-inline">';
+                    echo '<input class="form-check-input" type="checkbox" id="inlineCheckbox' . $tipo['id'] . '" value="' . $tipo['id'] . '">';
+                    echo '<label class="form-check-label" for="inlineCheckbox' . $tipo['id'] . '">' . $tipo['nombreTipo'] . '</label>';
+                    echo '</div>';
+
+                    $count++;
+
+                    // Insertar <br> después de cada 6 checkbox
+                    if ($count % 6 === 0) {
+                        echo '<br>';
+                    }
+                }
+            }
+            // Llamar a la función para generar checkboxes
+            generateTypeCheckboxes($tipos);
+        ?>
+
 
         <!-- Región -->
 

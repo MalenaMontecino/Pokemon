@@ -8,7 +8,7 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:80/PDO/index.php",
+            "url": "http://localhost:80/Pokemon/PDO/index.php",
             "webRoot": "${workspaceFolder}"
         },
         {

@@ -54,9 +54,9 @@
 
                 </ul>
                 <!--BUSCAR-->
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                <form class="d-flex" role="buscar">
+                    <input class="form-control me-2" type="buscar" placeholder="buscar" aria-label="buscar">
+                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
                 </form>
 
             </div>
