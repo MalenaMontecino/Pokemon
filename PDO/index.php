@@ -2,7 +2,7 @@
 <?php
 require_once('./php_librarys/bd.php');
 
-$ciudades = selectCiudades();
+$cromos = selectCromos();
 ?>
 
 <!--PRUEBA PDO-->
@@ -83,15 +83,23 @@ $ciudades = selectCiudades();
             <tr>
                 <th>Identificador</th>
                 <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
 
             </tr>
-            <?php foreach ($ciudades as $ciudad) { ?>
+            <?php foreach ($cromos as $cromo) { ?>
                 <tr>
                     <td>
-                        <?php echo $ciudad['id_ciudad'] ?>
+                        <?php echo $cromo['id'] ?>
                     </td>
                     <td>
-                        <?php echo $ciudad['nombre'] ?>
+                        <?php echo $cromo['nombre'] ?>
+                    </td>
+                    <td>
+                        <?php echo $cromo['descripcion'] ?>
+                    </td>
+                    <td>
+                        <?php echo $cromo['imagen'] ?>
                     </td>
 
                 </tr>
