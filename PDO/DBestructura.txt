@@ -1,0 +1,75 @@
+pokemon_db
+
+Modelo relacional:
+
+Tabla de Cromos (Cards):
+ID (clave primaria)
+Nombre
+Descripción
+Imagen
+
+Tabla de Regiones:
+ID (clave primaria)
+Nombre de la Región
+
+Tabla de Relación 1:N (Cromos-Regiones):
+ID (clave primaria)
+ID_Cromo (clave foránea que referencia a la tabla de Cromos)
+ID_Region (clave foránea que referencia a la tabla de Regiones)
+
+Tabla de Tipos de Pokémon:
+ID (clave primaria)
+Nombre del Tipo
+
+Tabla de Relación M:N (Cromos-Tipos):
+ID (clave primaria)
+ID_Cromo (clave foránea que referencia a la tabla de Cromos)
+ID_Tipo (clave foránea que referencia a la tabla de Tipos de Pokémon)
+
+Con esta estructura:
+-Un cromo puede pertenecer a una o más regiones, ya que en la tabla
+de "Cromos-Regiones" se establece una relación 1:N entre Cromos y Regiones.
+
+-Un cromo puede tener uno o más tipos de Pokémon, ya que en la tabla
+ de "Cromos-Tipos" se establece una relación M:N entre Cromos y Tipos de Pokémon.
+
+
+
+
+
+ Vale he hecho esto lo siguiente, pero me puedes añadir valores ? que haya almenos un pokemon de cada region y que se utilicen también todos los tipos de pokemon: drop database if exists pokemon_db;
+CREATE DATABASE pokemon_db;
+USE pokemon_db;
+
+CREATE TABLE cromos (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(25),
+    descripcion VARCHAR(200),
+    imagen LONGBLOB
+);
+
+CREATE TABLE regiones (
+    id INT PRIMARY KEY,
+    nombreRegion VARCHAR(25)
+);
+
+CREATE TABLE cromos_regiones (
+    id INT PRIMARY KEY,
+    id_cromo INT,
+    id_region INT,
+    FOREIGN KEY (id_cromo) REFERENCES cromos(id),
+    FOREIGN KEY (id_region) REFERENCES regiones(id)
+);
+
+CREATE TABLE tiposPokemon (
+    id INT PRIMARY KEY,
+    nombreTipo VARCHAR(25)
+);
+/**/
+CREATE TABLE cromos_tipos (
+    id INT PRIMARY KEY,
+    id_cromo INT,
+    id_tipo INT,
+    FOREIGN KEY (id_cromo) REFERENCES cromos(id),
+    FOREIGN KEY (id_tipo) REFERENCES tiposPokemon(id)
+);
