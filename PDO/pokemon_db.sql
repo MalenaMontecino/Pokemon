@@ -62,13 +62,13 @@ INSERT INTO tiposPokemon (id, nombreTipo) VALUES
 (5, 'Hielo'),
 (6, 'Volador'),
 (7, 'Tierra'),
-(8, 'Roca'),
+(8, 'Fantasma'),
 (9, 'Veneno'),
 (10, 'Psíquico'),
 (11, 'Lucha'),
 (12, 'Bicho'),
 (13, 'Normal'),
-(14, 'Fantasma'),
+(14, 'Roca'),
 (15, 'Siniestro'),
 (16, 'Hada'),
 (17, 'Acero'),
@@ -76,33 +76,30 @@ INSERT INTO tiposPokemon (id, nombreTipo) VALUES
 
 -- Insertar datos en la tabla 'cromos'
 INSERT INTO cromos (id, nombre, descripcion, imagen) VALUES
-(1, 'Bulbasaur', 'Tipo Planta/Veneno', NULL),
-(2, 'Charmander', 'Tipo Fuego', NULL),
-(3, 'Squirtle', 'Tipo Agua', NULL),
-(4, 'Chikorita', 'Tipo Planta', NULL),
-(5, 'Cyndaquil', 'Tipo Fuego', NULL),
-(6, 'Totodile', 'Tipo Agua', NULL),
-(7, 'Treecko', 'Tipo Planta', NULL),
-(8, 'Torchic', 'Tipo Fuego', NULL),
-(9, 'Mudkip', 'Tipo Agua', NULL),
-(10, 'Turtwig', 'Tipo Planta', NULL),
-(11, 'Chimchar', 'Tipo Fuego', NULL),
-(12, 'Piplup', 'Tipo Agua', NULL),
-(13, 'Snivy', 'Tipo Planta', NULL),
-(14, 'Tepig', 'Tipo Fuego', NULL),
-(15, 'Oshawott', 'Tipo Agua', NULL),
-(16, 'Chespin', 'Tipo Planta', NULL),
-(17, 'Fennekin', 'Tipo Fuego', NULL),
-(18, 'Froakie', 'Tipo Agua', NULL),
-(19, 'Rowlet', 'Tipo Planta/Volador', NULL),
-(20, 'Litten', 'Tipo Fuego', NULL),
-(21, 'Popplio', 'Tipo Agua', NULL),
-(22, 'Grookey', 'Tipo Planta', NULL),
-(23, 'Scorbunny', 'Tipo Fuego', NULL),
-(24, 'Sobble', 'Tipo Agua', NULL),
-(25, 'Bulbasaur_Alola', 'Tipo Planta/Veneno', NULL),
-(26, 'Charmander_Alola', 'Tipo Fuego/Volador', NULL),
-(27, 'Squirtle_Alola', 'Tipo Agua/Hielo', NULL);
+(1, 'Bulbasaur', 'Un Pokémon de tipo Planta/Veneno conocido por tener una planta en su espalda que crece a medida que evoluciona.',  LOAD_FILE('C:/xampp/htdocs/Pokemon/PDO/images/imgPokemon/bulbasur.png')),
+(2, 'Charmander', 'Un pequeño Pokémon de tipo Fuego con una llama en la punta de su cola.', NULL),
+(3, 'Squirtle', 'Un simpático Pokémon de tipo Agua con una cáscara en forma de caparazón en su espalda.', NULL),
+(4, 'Chikorita', 'Un Pokémon de tipo Planta con una hoja en su cabeza que usa para detectar cambios en el ambiente.', NULL),
+(5, 'Cyndaquil', 'Un Pokémon de tipo Fuego con llamas en su espalda que enciende cuando se siente amenazado.', NULL),
+(6, 'Totodile', 'Un Pokémon de tipo Agua con fuertes mandíbulas que utiliza para atrapar a sus presas.', NULL),
+(7, 'Treecko', 'Un ágil Pokémon de tipo Planta conocido por su velocidad y su cola en forma de hoja.', NULL),
+(8, 'Torchic', 'Un pequeño Pokémon de tipo Fuego con un cuerpo cubierto de plumas.', NULL),
+(9, 'Mudkip', 'Un Pokémon de tipo Agua con aletas en sus mejillas que le permiten detectar corrientes de agua.', NULL),
+(10, 'Turtwig', 'Un Pokémon de tipo Planta con un caparazón en su espalda que le sirve de protección.', NULL),
+(11, 'Chimchar', 'Un juguetón Pokémon de tipo Fuego con una llama ardiente en su cola.', NULL),
+(12, 'Piplup', 'Un pingüino Pokémon de tipo Agua con una corona de plumas en la cabeza.', NULL),
+(13, 'Snivy', 'Un Pokémon de tipo Planta con una actitud serena y un collar de hojas alrededor de su cuello.', NULL),
+(14, 'Tepig', 'Un Pokémon de tipo Fuego con un cuerpo cubierto de cerdas que se encienden cuando está emocionado.', NULL),
+(15, 'Oshawott', 'Un Pokémon de tipo Agua con una concha en forma de caparazón que usa como espada.', NULL),
+(16, 'Chespin', 'Un Pokémon de tipo Planta con púas en su espalda que usa para defenderse de los enemigos.', NULL),
+(17, 'Fennekin', 'Un Pokémon de tipo Fuego con orejas grandes y una llama en su cola.', NULL),
+(18, 'Froakie', 'Un ágil Pokémon de tipo Agua con la capacidad de saltar grandes distancias.', NULL),
+(19, 'Rowlet', 'Un Pokémon de tipo Planta/Volador con grandes ojos y una actitud tranquila.', NULL),
+(20, 'Litten', 'Un felino Pokémon de tipo Fuego con un pelaje caliente y una personalidad independiente.', NULL),
+(21, 'Popplio', 'Un juguetón Pokémon de tipo Agua conocido por sus habilidades acuáticas y su nariz redonda.', NULL),
+(22, 'Grookey', 'Un Pokémon de tipo Planta con un palo como accesorio que utiliza como instrumento musical.', NULL),
+(23, 'Scorbunny', 'Un Pokémon de tipo Fuego con una energía inagotable y una cola en forma de llama.', NULL),
+(24, 'Sobble', 'Un tímido Pokémon de tipo Agua que se camufla en el agua para evitar peligros.', NULL);
 
 -- Insertar datos en la tabla 'cromos_regiones'
 INSERT INTO cromos_regiones (id, id_cromo, id_region) VALUES
@@ -129,10 +126,8 @@ INSERT INTO cromos_regiones (id, id_cromo, id_region) VALUES
 (21, 21, 7), -- Popplio pertenece a Alola
 (22, 22, 8), -- Grookey pertenece a Galar
 (23, 23, 8), -- Scorbunny pertenece a Galar
-(24, 24, 8), -- Sobble pertenece a Galar
-(25, 25, 7), -- Bulbasaur_Alola pertenece a Alola
-(26, 26, 7), -- Charmander_Alola pertenece a Alola
-(27, 27, 7); -- Squirtle_Alola pertenece a Alola
+(24, 24, 8); -- Sobble pertenece a Galar
+
 
 -- Insertar datos en la tabla 'cromos_tipos'
 INSERT INTO cromos_tipos (id, id_cromo, id_tipo) VALUES
@@ -159,7 +154,6 @@ INSERT INTO cromos_tipos (id, id_cromo, id_tipo) VALUES
 (21, 21, 1), -- Popplio es de tipo Agua
 (22, 22, 3), -- Grookey es de tipo Planta
 (23, 23, 2), -- Scorbunny es de tipo Fuego
-(24, 24, 1), -- Sobble es de tipo Agua
-(25, 25, 3), -- Bulbasaur_Alola es de tipo Planta/Veneno
-(26, 26, 6), -- Charmander_Alola es de tipo Fuego/Volador
-(27, 27, 5); -- Squirtle_Alola es de tipo Agua/Hielo
+(24, 24, 1); -- Sobble es de tipo Agua
+
+select nombreTipo from tiposPokemon;
