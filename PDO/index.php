@@ -14,7 +14,7 @@ $ciudades = selectCiudades();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cromos</title>
 
-   <!-- <link rel="stylesheet" href="./css/css.css"> -->
+    <!-- <link rel="stylesheet" href="./css/css.css"> -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -28,7 +28,7 @@ $ciudades = selectCiudades();
 
         <div class="container-fluid">
             <!--LOGO-->
-            <a class="navbar-brand"  href="#">LOGO</a>
+            <a class="navbar-brand" href="#">LOGO</a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -76,24 +76,24 @@ $ciudades = selectCiudades();
 
 
     <!--PRUEBA PDO-->
-   
+
 
     <div class="container">
         <table class="table table-striped">
             <tr>
                 <th>Identificador</th>
                 <th>Nombre</th>
-            
+
             </tr>
             <?php foreach ($ciudades as $ciudad) { ?>
                 <tr>
                     <td>
                         <?php echo $ciudad['id_ciudad'] ?>
-                    </td> 
+                    </td>
                     <td>
                         <?php echo $ciudad['nombre'] ?>
                     </td>
-                   
+
                 </tr>
 
             <?php } ?>
@@ -104,6 +104,23 @@ $ciudades = selectCiudades();
     </div>
 
     <!--PRUEBA PDO-->
+
+
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="..." class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

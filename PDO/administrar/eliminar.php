@@ -32,7 +32,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!--HOME-->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Cromos existentes</a>
+                        <a class="nav-link active" aria-current="page" href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
                     </li>
                     <!--LINK
             <li class="nav-item">
