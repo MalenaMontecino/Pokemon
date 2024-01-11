@@ -28,7 +28,7 @@ $cromos = selectCromos();
 
         <div class="container-fluid">
             <!--LOGO-->
-            <a class="navbar-brand" href="#">LOGO</a>
+            <a class="navbar-brand" href="PDO/index.php">LOGO</a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -61,51 +61,40 @@ $cromos = selectCromos();
                     </li>
 
                 </ul>
-                <!--BUSCAR-->
-                <form class="d-flex" role="buscar">
-                    <input class="form-control me-2" type="buscar" placeholder="buscar" aria-label="buscar">
-                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-                </form>
+             
 
             </div>
 
         </div>
     </nav>
+    <div class="container mt-5 mb-5">
+        <div class="row row-cols-4 ">
+            <?php foreach ($cromos as $cromo) { ?>
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <h5 id = 'nombrePokemon' style="background-color:rgb(221, 237, 250);" class="card-title text-center p-3">
+                            <?php echo $cromo['nombre']; ?>
+                        </h5>
+                        <img src="images/imgPokemon/<?php echo $cromo['imagen']; ?>" class="card-img-left"
+                            alt="<?php echo $cromo['nombre']; ?>">
+                        <div class="card-body">
 
-
-
-    <div class="container p-5">
-    <div class="row row-cols-2">
-        <?php foreach ($cromos as $cromo) { ?>
-            <div class="col mb-4">
-                <div class="card h-100">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img src="<?php echo $cromo['imagen']; ?>" class="card-img-left img-fluid"
-                                alt="<?php echo $cromo['nombre']; ?>">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <?php echo $cromo['nombre']; ?>
-                                </h5>
-                                <p class="card-text"><strong>Tipo:</strong>
-                                    <?php echo $cromo['nombreTipo']; ?>
-                                </p>
-                                <p class="card-text">
-                                    <?php echo $cromo['descripcion']; ?>
-                                </p>
-                                <p class="card-text"><strong>Región:</strong>
-                                    <?php echo $cromo['nombreRegion']; ?>
-                                </p>
-                            </div>
+                            <p class="card-text"><strong>Tipo:</strong>
+                                <?php echo $cromo['nombreTipo']; ?>
+                            </p>
+                            <p class="card-text">
+                                <?php echo $cromo['descripcion']; ?>
+                            </p>
+                            <p class="card-text"><strong>Región:</strong>
+                                <?php echo $cromo['nombreRegion']; ?>
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
+            <?php } ?>
+        </div>
     </div>
-</div>
+
 
 
 </body>

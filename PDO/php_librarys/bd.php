@@ -90,7 +90,8 @@ function selectCromos()
 
     return $resultado;
 }
-function getTiposFromDatabase(){
+
+function selectTiposPokemon(){
     
     $conexion = openBd();
 
@@ -107,6 +108,11 @@ function getTiposFromDatabase(){
 
     return $resultado;
 }
+
+
+
+
+
 function insertCiudad($id_ciudad, $nombre)
 {
     $conexion = openBd();

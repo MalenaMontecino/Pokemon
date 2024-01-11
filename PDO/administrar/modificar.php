@@ -13,7 +13,7 @@ $cromos = selectCromos();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar cromos</title>
 
-    <link rel="stylesheet" href="/css/css.css">
+    <link rel="stylesheet" href="Pokemon/PDO/css/css.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -27,7 +27,7 @@ $cromos = selectCromos();
 
         <div class="container-fluid">
             <!--LOGO-->
-            <a class="navbar-brand" style="background-image: url(/images/pokemon_logo.png);" href="#">LOGO</a>
+            <a class="navbar-brand" href="http://localhost/Pokemon/PDO/index.php">LOGO</a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -60,11 +60,7 @@ $cromos = selectCromos();
                     </li>
 
                 </ul>
-                <!--BUSCAR-->
-                <form class="d-flex" role="buscar">
-                    <input class="form-control me-2" type="buscar" placeholder="buscar" aria-label="buscar">
-                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-                </form>
+              
 
             </div>
 
@@ -76,7 +72,7 @@ $cromos = selectCromos();
     <!--PRUEBA PDO-->
 
 
-    <div class="container">
+    <div class="container mt-5">
         <table class="table table-striped">
             <tr>
                 <th>Identificador</th>

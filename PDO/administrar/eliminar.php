@@ -20,7 +20,7 @@
 
         <div class="container-fluid">
             <!--LOGO-->
-            <a class="navbar-brand" style="background-image: url(/images/pokemon_logo.png);" href="#">LOGO</a>
+            <a class="navbar-brand" style="background-image: url(/images/pokemon_logo.png);" href="http://localhost/Pokemon/PDO/index.php">LOGO</a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -53,12 +53,7 @@
                     </li>
 
                 </ul>
-                <!--BUSCAR-->
-                <form class="d-flex" role="buscar">
-                    <input class="form-control me-2" type="buscar" placeholder="buscar" aria-label="buscar">
-                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-                </form>
-
+               
             </div>
 
         </div>

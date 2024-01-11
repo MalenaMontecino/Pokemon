@@ -2,7 +2,7 @@
 <?php
 require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
 // Obtener tipos de la base de datos (asegúrate de tener la conexión y la consulta adecuadas)
-$tipos = getTiposFromDatabase();
+$tipos = selectTiposPokemon();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ $tipos = getTiposFromDatabase();
 
         <div class="container-fluid">
             <!--LOGO-->
-            <a class="navbar-brand" style="background-image: url(/images/pokemon_logo.png);" href="#">LOGO</a>
+            <a class="navbar-brand" style="background-image: url(/images/pokemon_logo.png);" href="http://localhost/Pokemon/PDO/index.php">LOGO</a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -75,7 +75,7 @@ $tipos = getTiposFromDatabase();
 
 
 
-    <form id="miFormulario" class="position-absolute top-50 start-50 translate-middle mt-4" style="width: 800px;">
+    <form id="miFormulario" class="position-absolute top-50 start-50 translate-middle mt-4" style="width: 800px;">  <!--padding:50px; border-radius:10px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);" -->
 
         <h1> Nuevo Pokémon </h1> <br>
         <!-- nombre -->
@@ -137,7 +137,7 @@ $tipos = getTiposFromDatabase();
         </div>
         <!-- botón -->
         <div class="text-center "> <!-- para que me centre el botón -->
-            <button type="button" class="btn btn-outline-secondary" onclick="calcularPropina()">Dar de alta</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="darAlta()">Dar de alta</button>
         </div> <br><br>
 
 
