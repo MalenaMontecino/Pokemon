@@ -113,22 +113,72 @@ function selectTiposPokemon(){
 
 
 
-function insertCromos($id, $nombre, $descripcion, $imagen)
+// function insertCromos($id, $nombre, $descripcion, $imagen, $nombreRegion, $nombreTipo)
+// {
+//     $conexion = openBd();
+//     $sentenciaText = " insert into cromos (id, nombre, descripcion, imagen) values (:id, :nombre, :descripcion, :imagen)";
+//     $sentencia = $conexion->prepare($sentenciaText);
+//     $sentencia->bindParam(':id', $id);
+//     $sentencia->bindParam(':nombre', $nombre);
+//     $sentencia->bindParam(':descripcion', $descripcion);
+//     $sentencia->bindParam(':imagen', $imagen);
+//     $sentencia->execute();
+    
+//     // Obtiene el id del cromo insertado
+//     $idCromo = $conexion->lastInsertId();
+
+//     // Inserta en la tabla cromos_regiones usando una subconsulta
+//     $sentenciaText = "INSERT INTO cromos_regiones (id_cromo, id_region) 
+//     VALUES (:idCromo, (SELECT id FROM regiones WHERE nombreRegion = :nombreRegion))";
+//     $sentencia = $conexion->prepare($sentenciaText);
+//     $sentencia->bindParam(':idCromo', $id);
+//     $sentencia->bindParam(':nombreRegion', $nombreRegion);
+//     $sentencia->execute();
+
+//     // Inserta en la tabla cromos_tipos usando una subconsulta
+//     $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) 
+//     VALUES (:idCromo, (SELECT id FROM tiposPokemon WHERE nombreTipo = :nombreTipo))";
+//     $sentencia = $conexion->prepare($sentenciaText);
+//     $sentencia->bindParam(':idCromo', $id);
+//     $sentencia->bindParam(':nombreTipo', $nombreTipo);
+//     $sentencia->execute();
+
+   
+//     $conexion = closeBd();
+// }
+function insertCromos($nombre, $descripcion, $imagen, $nombreRegion, $nombreTipo)
 {
     $conexion = openBd();
-    $sentenciaText = " insert into cromos (id, nombre, descripcion, imagen) values (:id, :nombre, :descripcion, :imagen)";
+
+    // Insertar en la tabla cromos
+    $sentenciaText = "INSERT INTO cromos (nombre, descripcion, imagen) VALUES (:nombre, :descripcion, :imagen)";
     $sentencia = $conexion->prepare($sentenciaText);
-    $sentencia->bindParam(':id', $id);
     $sentencia->bindParam(':nombre', $nombre);
     $sentencia->bindParam(':descripcion', $descripcion);
     $sentencia->bindParam(':imagen', $imagen);
     $sentencia->execute();
 
+    // Obtener el ID del último cromo insertado
+    $idCromo = $conexion->lastInsertId();
+
+    // Insertar en la tabla cromos_regiones usando una subconsulta
+    $sentenciaText = "INSERT INTO cromos_regiones (id_cromo, id_region) 
+                      VALUES (:idCromo, (SELECT id FROM regiones WHERE nombreRegion = :nombreRegion))";
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->bindParam(':idCromo', $idCromo);
+    $sentencia->bindParam(':nombreRegion', $nombreRegion);
+    $sentencia->execute();
+
+    // Insertar en la tabla cromos_tipos usando una subconsulta
+    $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) 
+                      VALUES (:idCromo, (SELECT id FROM tiposPokemon WHERE nombreTipo = :nombreTipo))";
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->bindParam(':idCromo', $idCromo);
+    $sentencia->bindParam(':nombreTipo', $nombreTipo);
+    $sentencia->execute();
+
     $conexion = closeBd();
 }
-
-
-
 
 
 

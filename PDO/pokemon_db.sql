@@ -4,7 +4,7 @@ USE pokemon_db;
 
 drop table if exists cromos;
 CREATE TABLE cromos (
-    id INT PRIMARY KEY,
+    id INT auto_increment PRIMARY KEY,
     nombre VARCHAR(25),
     descripcion VARCHAR(200),
     imagen LONGBLOB
