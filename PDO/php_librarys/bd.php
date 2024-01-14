@@ -150,35 +150,57 @@ function insertCromos($nombre, $descripcion, $imagen, $nombreRegion, $nombreTipo
 {
     $conexion = openBd();
 
-    // Insertar en la tabla cromos
-    $sentenciaText = "INSERT INTO cromos (nombre, descripcion, imagen) VALUES (:nombre, :descripcion, :imagen)";
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Add this line
+    // Inserta en la tabla cromos
+    $sentenciaText =  "INSERT INTO cromos (id, nombre, descripcion, imagen) VALUES (NULL, :nombre, :descripcion, :imagen)";
+    
     $sentencia = $conexion->prepare($sentenciaText);
     $sentencia->bindParam(':nombre', $nombre);
     $sentencia->bindParam(':descripcion', $descripcion);
     $sentencia->bindParam(':imagen', $imagen);
     $sentencia->execute();
+    echo $sentencia->queryString;
+if ($sentencia->errorCode() != '00000') {
+    $errors = $sentencia->errorInfo();
+    print_r($errors);
+    // Handle the error as needed
+}
 
-    // Obtener el ID del último cromo insertado
+    // Obtén el ID del cromo recién insertado
     $idCromo = $conexion->lastInsertId();
 
-    // Insertar en la tabla cromos_regiones usando una subconsulta
+    // Inserta en la tabla cromos_regiones
     $sentenciaText = "INSERT INTO cromos_regiones (id_cromo, id_region) 
-                      VALUES (:idCromo, (SELECT id FROM regiones WHERE nombreRegion = :nombreRegion))";
+    VALUES (:idCromo, (SELECT id FROM regiones WHERE nombreRegion = :nombreRegion))";
     $sentencia = $conexion->prepare($sentenciaText);
     $sentencia->bindParam(':idCromo', $idCromo);
     $sentencia->bindParam(':nombreRegion', $nombreRegion);
     $sentencia->execute();
+    echo $sentencia->queryString;
+if ($sentencia->errorCode() != '00000') {
+    $errors = $sentencia->errorInfo();
+    print_r($errors);
+    // Handle the error as needed
+}
 
-    // Insertar en la tabla cromos_tipos usando una subconsulta
+    // Inserta en la tabla cromos_tipos
     $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) 
-                      VALUES (:idCromo, (SELECT id FROM tiposPokemon WHERE nombreTipo = :nombreTipo))";
+    VALUES (:idCromo, (SELECT id FROM tiposPokemon WHERE nombreTipo = :nombreTipo))";
     $sentencia = $conexion->prepare($sentenciaText);
     $sentencia->bindParam(':idCromo', $idCromo);
     $sentencia->bindParam(':nombreTipo', $nombreTipo);
     $sentencia->execute();
+    echo $sentencia->queryString;
+if ($sentencia->errorCode() != '00000') {
+    $errors = $sentencia->errorInfo();
+    print_r($errors);
+    // Handle the error as needed
+}
 
     $conexion = closeBd();
 }
+
+
 
 
 
