@@ -1,6 +1,7 @@
 <!--PRUEBA PDO-->
 <?php
-require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
+require_once('d:\DAW 2\XAMPP\ARCHIVOS\htdocs\Pokemon\PDO\php_librarys\bd.php');
+//require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
 
 $cromos = selectCromos();
 ?>
@@ -27,8 +28,10 @@ $cromos = selectCromos();
 
         <div class="container-fluid">
             <!--LOGO-->
-            <a class="navbar-brand" href="http://localhost/Pokemon/PDO/index.php">LOGO</a>
-            <!--BUTTON DESPLEGABLE-->
+            <a class="navbar-brand" href="http://localhost/Pokemon/PDO/index.php">
+                <img src="\Pokemon\PDO\images\pokemon_logo.png"  width="100" height="40">
+            </a>
+             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -41,10 +44,7 @@ $cromos = selectCromos();
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
                     </li>
-                    <!--LINK
-            <li class="nav-item">
-                <a class="nav-link" href="#">Dar de alta</a>
-            </li>-->
+            
 
                     <!--SELECT-->
                     <li class="nav-item dropdown">

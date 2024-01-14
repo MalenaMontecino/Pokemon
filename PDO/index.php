@@ -24,11 +24,13 @@ $cromos = selectCromos();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg " style="background-color: #e3f2fd;">
 
         <div class="container-fluid">
             <!--LOGO-->
-            <a class="navbar-brand" href="PDO/index.php">LOGO</a>
+            <a class="navbar-brand" href="http://localhost/Pokemon/PDO/index.php">
+                <img src="\Pokemon\PDO\images\pokemon_logo.png"  width="100" height="40">
+            </a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -36,17 +38,13 @@ $cromos = selectCromos();
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!--SUB-ELECCIONES-->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav  me-auto mb-2 mb-lg-0 ">
                     <!--HOME-->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Cromos existentes</a>
                     </li>
-                    <!--LINK
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Dar de alta</a>
-                    </li>-->
-
+             
                     <!--SELECT-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -68,9 +66,9 @@ $cromos = selectCromos();
         </div>
     </nav>
     <div class="container mt-5 mb-5">
-        <div class="row row-cols-4 ">
+        <div class="row   ">
             <?php foreach ($cromos as $cromo) { ?>
-                <div class="col mb-4">
+                <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- responsive -->
                     <div class="card h-100">
                         <h5 id = 'nombrePokemon' style="background-color:rgb(221, 237, 250);" class="card-title text-center p-3">
                             <?php echo $cromo['nombre']; ?>

@@ -1,6 +1,8 @@
 <!--PRUEBA PDO-->
 <?php
-require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
+require_once('d:\DAW 2\XAMPP\ARCHIVOS\htdocs\Pokemon\PDO\php_librarys\bd.php');
+//require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
+
 // Obtener tipos de la base de datos (asegúrate de tener la conexión y la consulta adecuadas)
 $tipos = selectTiposPokemon();
 ?>
@@ -27,7 +29,9 @@ $tipos = selectTiposPokemon();
 
         <div class="container-fluid">
             <!--LOGO-->
-            <a class="navbar-brand" style="background-image: url(/images/pokemon_logo.png);" href="http://localhost/Pokemon/PDO/index.php">LOGO</a>
+            <a class="navbar-brand" href="http://localhost/Pokemon/PDO/index.php">
+                <img src="\Pokemon\PDO\images\pokemon_logo.png"  width="100" height="40">
+            </a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -42,10 +46,7 @@ $tipos = selectTiposPokemon();
                         <a class="nav-link active" aria-current="page"
                             href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
                     </li>
-                    <!--LINK
-            <li class="nav-item">
-                <a class="nav-link" href="#">Dar de alta</a>
-            </li>-->
+           
 
                     <!--SELECT-->
                     <li class="nav-item dropdown">
@@ -61,11 +62,7 @@ $tipos = selectTiposPokemon();
                     </li>
 
                 </ul>
-                <!--BUSCAR-->
-                <form class="d-flex" role="buscar">
-                    <input class="form-control me-2" type="buscar" placeholder="buscar" aria-label="buscar">
-                    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
-                </form>
+                
 
             </div>
 
@@ -75,7 +72,8 @@ $tipos = selectTiposPokemon();
 
 
 
-    <form id="miFormulario" class="position-absolute top-50 start-50 translate-middle mt-4" style="width: 800px;">  <!--padding:50px; border-radius:10px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);" -->
+    <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px;"> 
+    <!-- mx-auto para centrar -->
 
         <h1> Nuevo Pokémon </h1> <br>
         <!-- nombre -->
