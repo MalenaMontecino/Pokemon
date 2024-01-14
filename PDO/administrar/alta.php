@@ -72,18 +72,23 @@ $tipos = selectTiposPokemon();
 
 
 
-    <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px;"> 
+    <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px;" action="./php_controllers/cromosControllers.php" method="POST"> 
     <!-- mx-auto para centrar -->
 
         <h1> Nuevo Pokémon </h1> <br>
+           <!-- id -->
+           <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="id" placeholder="n">
+            <label name ="id"for="floatingNombre">ID</label>
+        </div>
         <!-- nombre -->
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="nombre" placeholder="n">
-            <label for="floatingNombre">Nombre Pokémon</label>
+            <label name ="nombre"for="floatingNombre">Nombre Pokémon</label>
         </div>
         <!-- tipo -->
 
-        <label for="tipo" class="form-label mb-3">Tipo</label> <br>
+        <label name="nombreTipo" for="tipo" class="form-label mb-3">Tipo</label> <br>
         <?php
             function generateTypeCheckboxes($tipos)
             {
@@ -125,17 +130,17 @@ $tipos = selectTiposPokemon();
 
         <!-- Descripción -->
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+            <label name="descripcion" for="exampleFormControlTextarea1" class="form-label">Descripción</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
         <!-- Imagen  -->
         <div class="mb-5">
-            <label for="formFile" class="form-label">Seleccionar Imagen</label>
+            <label name="imagen" for="formFile" class="form-label">Seleccionar Imagen</label>
             <input class="form-control" type="file" id="formFile">
         </div>
         <!-- botón -->
         <div class="text-center "> <!-- para que me centre el botón -->
-            <button type="button" class="btn btn-outline-secondary" onclick="darAlta()">Dar de alta</button>
+            <button type="submit" name ="insert" class="btn btn-outline-secondary" >Dar de alta</button>
         </div> <br><br>
 
 

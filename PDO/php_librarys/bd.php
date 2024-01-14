@@ -113,13 +113,15 @@ function selectTiposPokemon(){
 
 
 
-function insertCiudad($id_ciudad, $nombre)
+function insertCromos($id, $nombre, $descripcion, $imagen)
 {
     $conexion = openBd();
-    $sentenciaText = " insert into ciudades (id_ciudad, nombre) values (:id_ciudad, :nombre)";
+    $sentenciaText = " insert into cromos (id, nombre, descripcion, imagen) values (:id, :nombre, :descripcion, :imagen)";
     $sentencia = $conexion->prepare($sentenciaText);
-    $sentencia->bindParam(':id_ciudad', $id_ciudad);
+    $sentencia->bindParam(':id', $id);
     $sentencia->bindParam(':nombre', $nombre);
+    $sentencia->bindParam(':descripcion', $descripcion);
+    $sentencia->bindParam(':imagen', $imagen);
     $sentencia->execute();
 
     $conexion = closeBd();
