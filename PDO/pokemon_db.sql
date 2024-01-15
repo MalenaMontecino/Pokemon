@@ -11,13 +11,13 @@ CREATE TABLE cromos (
 );
 drop table if exists regiones;
 CREATE TABLE regiones (
-    id INT PRIMARY KEY,
+    id INT auto_increment PRIMARY KEY,
     nombreRegion VARCHAR(25)
 );
 -- RELACIÓN 1:N
 drop table if exists cromos_regiones;
 CREATE TABLE cromos_regiones (
-    id INT PRIMARY KEY,
+    id INT auto_increment PRIMARY KEY,
     id_cromo INT,
     id_region INT,
     FOREIGN KEY (id_cromo) REFERENCES cromos(id),
@@ -26,14 +26,14 @@ CREATE TABLE cromos_regiones (
 
 drop table if exists tiposPokemon;
 CREATE TABLE tiposPokemon (
-    id INT PRIMARY KEY,
+    id INT auto_increment PRIMARY KEY,
     nombreTipo VARCHAR(25)
 );
 
 -- RELACIÓN M:N
 drop table if exists cromos_tipos;
 CREATE TABLE cromos_tipos (
-    id INT PRIMARY KEY,
+    id INT auto_increment PRIMARY KEY,
     id_cromo INT,
     id_tipo INT,
     FOREIGN KEY (id_cromo) REFERENCES cromos(id),

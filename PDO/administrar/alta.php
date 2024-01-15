@@ -15,7 +15,7 @@ $tipos = selectTiposPokemon();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta de cromos</title>
 
-    <link rel="stylesheet" href="/PDO/css/formulario.css">
+    <!-- <link rel="stylesheet" href="../css/formulario.css"> -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -24,7 +24,7 @@ $tipos = selectTiposPokemon();
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body> <!-- style="background-color:rgb(244, 249, 253);" -->
     <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
 
         <div class="container-fluid">
@@ -72,7 +72,7 @@ $tipos = selectTiposPokemon();
 
 
 
-    <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px;" action="../phpControllers/cromosController.php" method="POST"> 
+    <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px; background-color: white;" action="../phpControllers/cromosController.php" method="POST"> 
     <!-- mx-auto para centrar -->
 
         <h1> Nuevo Pokémon </h1> <br>
@@ -92,7 +92,7 @@ $tipos = selectTiposPokemon();
 
                 foreach ($tipos as $tipo) {
                     echo '<div class="form-check form-check-inline">';
-                    echo '<input class="form-check-input" name="nombreTipo" type="checkbox" id="inlineCheckbox' . $tipo['id'] . '" value="' . $tipo['id'] . '">';
+                    echo '<input class="form-check-input" name="nombreTipo[]" type="checkbox" id="inlineCheckbox' . $tipo['id'] . '" value="' . $tipo['id'] . '">';
                     echo '<label class="form-check-label" for="inlineCheckbox' . $tipo['id'] . '">' . $tipo['nombreTipo'] . '</label>';
                     echo '</div>';
 

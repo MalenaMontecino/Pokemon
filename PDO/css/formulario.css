@@ -1,6 +1,11 @@
+
+#alta{
+  background-color:rgb(244, 249, 253);
+}
 #miFormulario{
     padding: 75px;
-    box-shadow: 2px 2px 2px 2px rgba(0.2, 0.2, 0.2, 0.2)
+    box-shadow: 2px 2px 2px 2px rgba(0.2, 0.2, 0.2, 0.2);
+    background-color: white;
   }
   h1{
    

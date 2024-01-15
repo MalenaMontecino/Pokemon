@@ -2,7 +2,10 @@
 require_once('../php_librarys/bd.php');
 
 if(isset($_POST['insert'])){
- insertCromos($_POST['nombre'], $_POST['descripcion'], $_POST['imagen'], $_POST[ 'nombreRegion'], $_POST['nombreTipo']);
+   
+
+ insertCromos($_POST['nombre'], $_POST['descripcion'], $_POST['imagen'],$_POST['nombreTipo'], $_POST['nombreRegion']);
+ // $_POST[ 'nombreRegion'], $_POST['nombreTipo']
  header('Location: ../index.php');
  exit();
 }
