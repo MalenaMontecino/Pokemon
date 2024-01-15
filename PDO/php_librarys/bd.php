@@ -167,13 +167,17 @@ function selectTiposPokemon(){
 //     $conexion = closeBd();
 // }
 
+        // foreach ($nombreTipos as $nombreTipo) {
+        //     $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) VALUES (:idCromo, (SELECT id FROM tiposPokemon WHERE nombreTipo = :nombreTipo))";
+        //     $sentencia = $conexion->prepare($sentenciaText);
+        //     $sentencia->bindParam(':idCromo', $idCromo);
+        //     $sentencia->bindParam(':nombreTipo', $nombreTipo);
+        //     $sentencia->execute();
+        // }
 
 function insertCromos($nombre, $descripcion, $imagen, $nombreTipo, $nombreRegion)
 {
     $conexion = openBd();
-
-
-
         // Inserta en la tabla cromos
         $sentenciaText =  "INSERT INTO cromos (nombre, descripcion, imagen) VALUES (:nombre, :descripcion, :imagen)";
         $sentencia = $conexion->prepare($sentenciaText);
@@ -184,22 +188,14 @@ function insertCromos($nombre, $descripcion, $imagen, $nombreTipo, $nombreRegion
 
         // Obtiene el ID del cromo recién insertado
         $idCromo = $conexion->lastInsertId();
-        
-        // // Inserta la relación en la tabla cromos_tipos
-        // $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) VALUES (:idCromo, (SELECT id FROM tiposPokemon WHERE nombreTipo = :nombreTipo))";
-        // $sentencia = $conexion->prepare($sentenciaText);
-        // $sentencia->bindParam(':idCromo', $idCromo);
-        // $sentencia->bindParam(':nombreTipo', $nombreTipo);
-        // $sentencia->execute();
-     
-        // Inserta la relación en la tabla cromos_tipos
-        foreach ($nombreTipos as $nombreTipo) {
-            $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) VALUES (:idCromo, (SELECT id FROM tiposPokemon WHERE nombreTipo = :nombreTipo))";
-            $sentencia = $conexion->prepare($sentenciaText);
-            $sentencia->bindParam(':idCromo', $idCromo);
-            $sentencia->bindParam(':nombreTipo', $nombreTipo);
-            $sentencia->execute();
-        }
+
+        // Inserta la relación en la tabla cromos_tipos para cada tipo seleccionado
+        //foreach ($nombreTipos as $nombreTipo) {
+        $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) VALUES (:idCromo, (SELECT id FROM tiposPokemon WHERE nombreTipo = :nombreTipo))";
+        $sentencia = $conexion->prepare($sentenciaText);
+        $sentencia->bindParam(':idCromo', $idCromo);
+        $sentencia->bindParam(':nombreTipo', $nombreTipo);
+        $sentencia->execute();
 
         // Inserta la relación en la tabla cromos_regiones
         $sentenciaText = "INSERT INTO cromos_regiones (id_cromo, id_region) VALUES (:idCromo, (SELECT id FROM regiones WHERE nombreRegion = :nombreRegion))";
@@ -208,13 +204,18 @@ function insertCromos($nombre, $descripcion, $imagen, $nombreTipo, $nombreRegion
         $sentencia->bindParam(':nombreRegion', $nombreRegion);
         $sentencia->execute();
 
-     
-
- 
         $conexion = closeBd();
-    
 }
 
+function deleteCromo(){
+    $conexion = openBd();
+    $sentenciaText = " * from tiposPokemon;";
+
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->execute();
+
+    $conexion = closeBd();
+}
 
 
 

@@ -1,10 +1,10 @@
 <!--PRUEBA PDO-->
 <?php
-require_once('d:\DAW 2\XAMPP\ARCHIVOS\htdocs\Pokemon\PDO\php_librarys\bd.php');
-//require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
+//require_once('d:\DAW 2\XAMPP\ARCHIVOS\htdocs\Pokemon\PDO\php_librarys\bd.php');
+require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
 
 // Obtener tipos de la base de datos (asegúrate de tener la conexión y la consulta adecuadas)
-$tipos = selectTiposPokemon();
+$tipos = selectTiposPokemon(); 
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ $tipos = selectTiposPokemon();
         <div class="container-fluid">
             <!--LOGO-->
             <a class="navbar-brand" href="http://localhost/Pokemon/PDO/index.php">
-                <img src="\Pokemon\PDO\images\pokemon_logo.png"  width="100" height="40">
+                <img src="\Pokemon\PDO\images\pokemon_logo.png" width="100" height="40">
             </a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -46,7 +46,7 @@ $tipos = selectTiposPokemon();
                         <a class="nav-link active" aria-current="page"
                             href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
                     </li>
-           
+
 
                     <!--SELECT-->
                     <li class="nav-item dropdown">
@@ -62,7 +62,7 @@ $tipos = selectTiposPokemon();
                     </li>
 
                 </ul>
-                
+
 
             </div>
 
@@ -72,47 +72,36 @@ $tipos = selectTiposPokemon();
 
 
 
-    <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px; background-color: white;" action="../phpControllers/cromosController.php" method="POST"> 
-    <!-- mx-auto para centrar -->
+    <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px; background-color: white;"
+        action="../phpControllers/cromosController.php" method="POST">
+        <!-- mx-auto para centrar -->
 
         <h1> Nuevo Pokémon </h1> <br>
-          
+
         <!-- nombre -->
         <div class="form-floating mb-3">
-            <input type="text"  name ="nombre" class="form-control" id="nombre" placeholder="n">
+            <input type="text" name="nombre" class="form-control" id="nombre" placeholder="n">
             <label for="floatingNombre">Nombre Pokémon</label>
         </div>
         <!-- tipo -->
-
-        <label  for="tipo" class="form-label mb-3">Tipo</label> <br>
-        <?php
-            function generateTypeCheckboxes($tipos)
-            {
-                $count = 0;
-
-                foreach ($tipos as $tipo) {
-                    echo '<div class="form-check form-check-inline">';
-                    echo '<input class="form-check-input" name="nombreTipo[]" type="checkbox" id="inlineCheckbox' . $tipo['id'] . '" value="' . $tipo['id'] . '">';
-                    echo '<label class="form-check-label" for="inlineCheckbox' . $tipo['id'] . '">' . $tipo['nombreTipo'] . '</label>';
-                    echo '</div>';
-
-                    $count++;
-
-                    // Insertar <br> después de cada 6 checkbox
-                    if ($count % 6 === 0) {
-                        echo '<br>';
+        <div id="tipos" class="row g-3">
+            <div class="col-auto">
+               
+                <select name="nombreTipo[]" id="tipo1" class="form-select mt-4" aria-label="Default select example">
+                    <option value="default" selected disabled>Tipo 1</option>
+                    <?php foreach ($tipos as $tipo) {
+                        echo ' <option value="' . $tipo['id'] . '">' . $tipo['nombreTipo'] . '</option>';
                     }
-                }
-            }
-            // Llamar a la función para generar checkboxes
-            generateTypeCheckboxes($tipos);
-        ?>
 
-
+                    ?>
+                </select> <br>
+            </div>
+          
+        </div>
         <!-- Región -->
 
 
-        <select name="nombreRegion" id="calificacionServicio" class="form-select mt-4" aria-label="Default select example">
+        <select name="nombreRegion" id="nombreRegion" class="form-select mt-4" aria-label="Default select example">
             <option value="default" selected disabled>Región</option>
             <option value="kanto">Kanto</option>
             <option value="johto">Johto</option>
@@ -126,17 +115,17 @@ $tipos = selectTiposPokemon();
 
         <!-- Descripción -->
         <div class="mb-3">
-            <label  for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-            <textarea class="form-control"  name="descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+            <textarea class="form-control" name="descripcion" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
         <!-- Imagen  -->
         <div class="mb-5">
             <label for="formFile" class="form-label">Seleccionar Imagen</label>
-            <input  name="imagen" class="form-control" type="file" id="formFile">
+            <input name="imagen" class="form-control" type="file" id="formFile">
         </div>
         <!-- botón -->
         <div class="text-center "> <!-- para que me centre el botón -->
-            <button type="submit" name ="insert" class="btn btn-outline-secondary" >Dar de alta</button>
+            <button type="submit" name="insert" class="btn btn-outline-secondary">Dar de alta</button>
         </div> <br><br>
 
 

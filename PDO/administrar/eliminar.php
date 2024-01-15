@@ -1,3 +1,12 @@
+<!--PRUEBA PDO-->
+<?php
+require_once('../php_librarys/bd.php');
+
+$cromos = selectCromos();
+?>
+
+<!--PRUEBA PDO-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +30,9 @@
         <div class="container-fluid">
             <!--LOGO-->
             <a class="navbar-brand" href="http://localhost/Pokemon/PDO/index.php">
-                <img src="\Pokemon\PDO\images\pokemon_logo.png"  width="100" height="40">
+                <img src="\Pokemon\PDO\images\pokemon_logo.png" width="100" height="40">
             </a>
-             <!--BUTTON DESPLEGABLE-->
+            <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -34,9 +43,10 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <!--HOME-->
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
                     </li>
-                 
+
                     <!--SELECT-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -51,11 +61,43 @@
                     </li>
 
                 </ul>
-               
+
             </div>
 
         </div>
     </nav>
+    <!-- CARDS -->
+    <div class="container mt-5 mb-5">
+        <div class="row   ">
+            <?php foreach ($cromos as $cromo) { ?>
+                <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- responsive -->
+                    <div class="card h-100">
+                        <form action="cromosController.php" method="POST">
+                            <h5 id='nombrePokemon' style="background-color:rgb(221, 237, 250);"
+                                class="card-title text-center p-3">
+                                <?php echo $cromo['nombre']; ?>
+                            </h5>
+                            <img src="../images/imgPokemon/<?php echo $cromo['imagen']; ?>" class="card-img-left"
+                                alt="<?php echo $cromo['nombre']; ?>">
+                            <div class="card-body">
+
+                                <p class="card-text"><strong>Tipo:</strong>
+                                    <?php echo $cromo['nombreTipo']; ?>
+                                </p>
+                                <p class="card-text">
+                                    <?php echo $cromo['descripcion']; ?>
+                                </p>
+                                <p class="card-text"><strong>Región:</strong>
+                                    <?php echo $cromo['nombreRegion']; ?>
+                                </p>
+                                <button type="submit" name="delete" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+    </div>
 </body>
 
 </html>
