@@ -1,7 +1,7 @@
 <!--PRUEBA PDO-->
 <?php
 //require_once('d:\DAW 2\XAMPP\ARCHIVOS\htdocs\Pokemon\PDO\php_librarys\bd.php');
-require_once('C:\xampp\htdocs\Pokemon\PDO\php_librarys\bd.php');
+require_once('..\php_librarys\bd.php');
 
 // Obtener tipos de la base de datos (asegúrate de tener la conexión y la consulta adecuadas)
 $tipos = selectTiposPokemon(); 
@@ -96,7 +96,16 @@ $tipos = selectTiposPokemon();
                     ?>
                 </select> <br>
             </div>
-          
+            <!-- <div class="col-auto">
+               
+                <select name="nombreTipo[]" id="tipo2" class="form-select mt-4" aria-label="Default select example">
+                    <option value="default" selected disabled>Tipo 2</option>
+                    <?php// foreach ($tipos as $tipo) {
+                       // echo ' <option value="' . $tipo['id'] . '">' . $tipo['nombreTipo'] . '</option>';}
+
+                    ?>
+                </select> <br>
+            </div> -->
         </div>
         <!-- Región -->
 

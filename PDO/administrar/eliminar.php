@@ -15,7 +15,7 @@ $cromos = selectCromos();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar cromos</title>
 
-    <link rel="stylesheet" href="/css/css.css">
+    <!-- <link rel="stylesheet" href="/css/css.css"> -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -68,19 +68,21 @@ $cromos = selectCromos();
     </nav>
     <!-- CARDS -->
     <div class="container mt-5 mb-5">
-        <div class="row   ">
+        <div class="row ">
             <?php foreach ($cromos as $cromo) { ?>
                 <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- responsive -->
                     <div class="card h-100">
-                        <form action="cromosController.php" method="POST">
+                        <form action="../phpControllers/cromosController.php" method="POST">
                             <h5 id='nombrePokemon' style="background-color:rgb(221, 237, 250);"
                                 class="card-title text-center p-3">
                                 <?php echo $cromo['nombre']; ?>
                             </h5>
-                            <img src="../images/imgPokemon/<?php echo $cromo['imagen']; ?>" class="card-img-left"
-                                alt="<?php echo $cromo['nombre']; ?>">
+                            <img src="../images/imgPokemon/<?php echo $cromo['imagen']; ?>" class="card-img-left img-fluid"
+                            alt="<?php echo $cromo['nombre']; ?>">
                             <div class="card-body">
-
+                                <p class="card-text"><strong>ID:</strong>
+                                    <?php echo $cromo['id']; ?>
+                                </p>
                                 <p class="card-text"><strong>Tipo:</strong>
                                     <?php echo $cromo['nombreTipo']; ?>
                                 </p>
@@ -90,13 +92,14 @@ $cromos = selectCromos();
                                 <p class="card-text"><strong>Región:</strong>
                                     <?php echo $cromo['nombreRegion']; ?>
                                 </p>
+                                <input type="hidden" name="id" value="<?php echo $cromo['id']; ?>">
                                 <button type="submit" name="delete" class="btn btn-danger">Eliminar</button>
+                            </div>
                         </form>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
-    </div>
+            <?php } ?>
+        </div>
     </div>
 </body>
 

@@ -29,7 +29,7 @@ $cromos = selectCromos();
         <div class="container-fluid">
             <!--LOGO-->
             <a class="navbar-brand" href="http://localhost/Pokemon/PDO/index.php">
-                <img src="\Pokemon\PDO\images\pokemon_logo.png"  width="100" height="40">
+                <img src="\Pokemon\PDO\images\pokemon_logo.png" width="100" height="40">
             </a>
             <!--BUTTON DESPLEGABLE-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -44,7 +44,7 @@ $cromos = selectCromos();
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Cromos existentes</a>
                     </li>
-             
+
                     <!--SELECT-->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -59,24 +59,27 @@ $cromos = selectCromos();
                     </li>
 
                 </ul>
-             
+
 
             </div>
 
         </div>
     </nav>
     <div class="container mt-5 mb-5">
-        <div class="row   ">
+        <div class="row">
             <?php foreach ($cromos as $cromo) { ?>
                 <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- responsive -->
                     <div class="card h-100">
-                        <h5 id = 'nombrePokemon' style="background-color:rgb(221, 237, 250);" class="card-title text-center p-3">
+                        <h5 id='nombrePokemon' style="background-color:rgb(221, 237, 250);"
+                            class="card-title text-center p-3">
                             <?php echo $cromo['nombre']; ?>
                         </h5>
                         <img src="images/imgPokemon/<?php echo $cromo['imagen']; ?>" class="card-img-left"
                             alt="<?php echo $cromo['nombre']; ?>">
                         <div class="card-body">
-
+                            <p class="card-text"><strong>ID:</strong>
+                                <?php echo $cromo['id']; ?>
+                            </p>
                             <p class="card-text"><strong>Tipo:</strong>
                                 <?php echo $cromo['nombreTipo']; ?>
                             </p>
