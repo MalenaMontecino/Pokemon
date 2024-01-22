@@ -78,7 +78,7 @@ $cromos = selectCromos();
                                 <?php echo $cromo['nombre']; ?>
                             </h5>
                             <img src="../images/imgPokemon/<?php echo $cromo['imagen']; ?>" class="card-img-left img-fluid"
-                            alt="<?php echo $cromo['nombre']; ?>">
+                                alt="<?php echo $cromo['nombre']; ?>">
                             <div class="card-body">
                                 <p class="card-text"><strong>ID:</strong>
                                     <?php echo $cromo['id']; ?>
@@ -92,10 +92,13 @@ $cromos = selectCromos();
                                 <p class="card-text"><strong>Región:</strong>
                                     <?php echo $cromo['nombreRegion']; ?>
                                 </p>
-                                <input type="hidden" name="id" value="<?php echo $cromo['id']; ?>">
-                                <button type="submit" name="delete" class="btn btn-danger">Eliminar</button>
+                                </form>
+                                <form action="../phpControllers/cromosController.php" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $cromo['id']; ?>">
+                                    <button type="submit" name="delete" class="btn btn-danger">Eliminar</button>
+                                </form>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             <?php } ?>

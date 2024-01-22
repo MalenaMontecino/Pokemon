@@ -99,9 +99,10 @@ function insertCromos($nombre, $descripcion, $imagen, $nombreTipo, $nombreRegion
 
 function deleteCromo($id){
     $conexion = openBd();
-    $sentenciaText = "DELETE from cromos where id = $id;";
+    $sentenciaText = "DELETE from cromos where id = :id;";
 
     $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->bindParam(':id', $id);
     $sentencia->execute();
 
     $conexion = closeBd();
