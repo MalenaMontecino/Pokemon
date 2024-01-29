@@ -43,21 +43,16 @@ $cromos = selectCromos();
                     <!--HOME-->
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Cromos existentes</a>
+                        
+                    </li>   
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="./administrar/alta.php">Dar de alta</a>
                     </li>
 
-                    <!--SELECT-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Administrar
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./administrar/modificar.php">Modificar datos</a></li>
-                            <li><a class="dropdown-item" href="./administrar/alta.php">Dar de alta</a></li>
-                            <li><a class="dropdown-item" href="./administrar/eliminar.php">Eliminar </a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="./administrar/eliminar.php">Administración</a>
                     </li>
-
+            
                 </ul>
 
 

@@ -46,30 +46,17 @@ $tipos = selectTiposPokemon();
                         <a class="nav-link active" aria-current="page"
                             href="http://localhost/Pokemon/PDO/index.php">Cromos existentes</a>
                     </li>
-
-
-                    <!--SELECT-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Administrar
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="modificar.php">Modificar datos</a></li>
-                            <li><a class="dropdown-item" href="alta.php">Dar de alta</a></li>
-                            <li><a class="dropdown-item" href="eliminar.php">Eliminar </a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="alta.php">Dar de alta</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="eliminar.php">Administración</a>
+                    </li>
                 </ul>
-
-
             </div>
-
         </div>
     </nav>
-
-
 
 
     <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px; background-color: white;"
@@ -100,7 +87,7 @@ $tipos = selectTiposPokemon();
                
                 <select name="nombreTipo[]" id="tipo2" class="form-select mt-4" aria-label="Default select example">
                     <option value="default" selected disabled>Tipo 2</option>
-                    <?php// foreach ($tipos as $tipo) {
+                    <?php // foreach ($tipos as $tipo) {
                        // echo ' <option value="' . $tipo['id'] . '">' . $tipo['nombreTipo'] . '</option>';}
 
                     ?>
@@ -134,9 +121,8 @@ $tipos = selectTiposPokemon();
         </div>
         <!-- botón -->
         <div class="text-center "> <!-- para que me centre el botón -->
-            <button type="submit" name="insert" class="btn btn-outline-secondary">Dar de alta</button>
+            <button type="submit" name="insert" class="btn btn-outline-primary">Dar de alta</button>
         </div> <br><br>
-
 
 
     </form>
