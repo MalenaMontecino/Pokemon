@@ -47,52 +47,76 @@ $cromos = selectCromos();
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="eliminar.php">Administración</a>
                     </li>
-                
+
                 </ul>
 
             </div>
 
         </div>
     </nav>
+
+
     <!-- CARDS -->
     <div class="container mt-5 mb-5">
-        <div class="row ">
-            <?php foreach ($cromos as $cromo) { ?>
+        <div class="row">
+            <?php
+            // Creamos un array para almacenar temporariamente los Pokémon agrupados por ID
+            $pokemonAgrupados = array();
+
+            // Iteramos sobre los Pokémon y los agrupamos por ID
+            foreach ($cromos as $cromo) {
+                $pokemonId = $cromo['id'];
+                if (!isset($pokemonAgrupados[$pokemonId])) {
+                    $pokemonAgrupados[$pokemonId] = array();
+                }
+                $pokemonAgrupados[$pokemonId][] = $cromo;
+            }
+
+            // Iteramos sobre los Pokémon agrupados
+            foreach ($pokemonAgrupados as $grupo) { ?>
                 <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- responsive -->
                     <div class="card h-100">
                         <form action="../phpControllers/cromosController.php" method="POST">
                             <h5 id='nombrePokemon' style="background-color:rgb(221, 237, 250);" class="card-title text-center p-3">
-                                <?php echo $cromo['nombre']; ?>
+                                <?php echo $grupo[0]['nombre']; ?>
                             </h5>
-                            <img src="../images/imgPokemon/<?php echo $cromo['imagen']; ?>" class="card-img-left img-fluid" alt="<?php echo $cromo['nombre']; ?>">
+                            <img src="../images/imgPokemon/<?php echo $grupo[0]['imagen']; ?>" class="card-img-left img-fluid" alt="<?php echo $grupo[0]['nombre']; ?>">
                             <div class="card-body">
                                 <p class="card-text"><strong>ID:</strong>
-                                    <?php echo $cromo['id']; ?>
+                                    <?php echo $grupo[0]['id']; ?>
                                 </p>
                                 <p class="card-text"><strong>Tipo:</strong>
-                                    <?php echo $cromo['nombreTipo']; ?>
+                                    <?php
+                                    // Concatenamos todos los tipos de todos los Pokémon en el grupo
+                                    $tipos = array();
+                                    foreach ($grupo as $cromo) {
+                                        $tipos[] = $cromo['nombreTipo'];
+                                    }
+                                    echo implode(', ', $tipos);
+                                    ?>
                                 </p>
                                 <p class="card-text">
-                                    <?php echo $cromo['descripcion']; ?>
+                                    <?php echo $grupo[0]['descripcion']; ?>
                                 </p>
                                 <p class="card-text"><strong>Región:</strong>
-                                    <?php echo $cromo['nombreRegion']; ?>
+                                    <?php echo $grupo[0]['nombreRegion']; ?>
                                 </p>
-                                <input type="hidden" name="id" value="<?php echo $cromo['id']; ?>">
-                                <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
-                                    <button type="submit" name="update" class="btn btn-primary  me-md-2">Modificar</button>
-                                    <button type="submit" name="delete" class="btn btn-danger ">Eliminar</button>
-                                </div>
+                            
                             </div>
                         </form>
+                        <div class="card-footer">
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+                                <button type="submit" name="update" class="btn btn-primary  me-md-2">Modificar</button>
+                                <button type="submit" name="delete" class="btn btn-danger ">Eliminar</button>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
-
             <?php } ?>
         </div>
     </div>
-    
+
 </body>
 
 </html>

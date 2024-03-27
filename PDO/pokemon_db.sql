@@ -156,3 +156,10 @@ INSERT INTO cromos_tipos (id, id_cromo, id_tipo) VALUES
 (23, 23, 2), -- Scorbunny es de tipo Fuego
 (24, 24, 1); -- Sobble es de tipo Agua
 
+
+SELECT c.*, r.nombreRegion, tp.nombreTipo
+    FROM cromos c
+    LEFT JOIN cromos_regiones cr ON c.id = cr.id_cromo
+    LEFT JOIN regiones r ON cr.id_region = r.id
+    LEFT JOIN cromos_tipos ct ON c.id = ct.id_cromo
+    LEFT JOIN tiposPokemon tp ON ct.id_tipo = tp.id;
