@@ -106,13 +106,13 @@ $cromos = selectCromos();
                             </div>
 
                             <div class="position-absolute bottom-0 end-0">
-                                <div class="card-footer"style="width:140%; margin-left:-40%;">
+                                <div class="card-footer"style="width:138%; margin-left:-38%; ">
 
-
-                                    <input type="hidden" name="pokemon_id" value="<?php echo $grupo[0]['id']; ?>">
-                                    <button type="submit" name="select" class="btn btn-primary  me-md-2">Modificar</button>
-                                    <button type="submit" name="delete" class="btn btn-danger " onclick="return confirm('¿Estás seguro de que deseas eliminar este Pokémon [<?php echo $grupo[0]['id']; ?>]?')">Eliminar</button>
-
+                                    <div style="margin-left:30%; ">
+                                        <input type="hidden" name="pokemon_id" value="<?php echo $grupo[0]['id']; ?>">
+                                        <button type="submit" name="select" class="btn btn-primary  me-md-2">Modificar</button>
+                                        <button type="submit" name="delete" class="btn btn-danger " onclick="return confirm('¿Estás seguro de que deseas eliminar este Pokémon [<?php echo $grupo[0]['id']; ?>]?')">Eliminar</button>
+                                    </div>
                                 </div>
                             </div>
 
