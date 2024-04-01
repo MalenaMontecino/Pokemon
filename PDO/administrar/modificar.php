@@ -98,7 +98,16 @@ $pokemons = selectCromosPorId($pokemon_id);
                         </div>
                         <div class="col-auto">
                             <select name="nombreTipo[]" id="tipo2" class="form-select mt-4" aria-label="Default select example">
-                                <option value="default" selected><?php echo $tipos[1]; ?></option>
+                                <option value="default" selected>
+                                    <?php 
+                                        if (isset($tipos[1]) && $tipos[1] !== null) {
+                                            // Si está definido y no es null, mostrar el tipo seleccionado
+                                            echo '<option value="default">' . $tipos[1] . '</option>';
+                                        } else {
+                                            // Si no está definido o es null, mostrar la opción predeterminada
+                                            echo '<option value="default" selected disabled>Tipo 2</option>';
+                                        } 
+                                    ?></option>
                                 <?php foreach ($tiposDB as $tipoDB) {
                                     echo ' <option value="' . $tipoDB['id'] . '">' . $tipoDB['nombreTipo'] . '</option>';
                                 } ?>
@@ -128,7 +137,7 @@ $pokemons = selectCromosPorId($pokemon_id);
                     <!-- Imagen  -->
                     <div class="mb-5">
                         <label for="formFile" class="form-label">Seleccionar Imagen</label>
-                        <img src="<?php echo $grupo[0]['imagen'] ?>" >
+                        <!-- <img src="<?php //echo $grupo[0]['imagen'] ?>"> -->
                         <input name="imagen" class="form-control" type="file" id="formFile" value=" <?php echo $grupo[0]['imagen'] ?>">
                     </div>
 
