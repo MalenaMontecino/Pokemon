@@ -13,10 +13,32 @@ if(isset($_POST['insert'])) {
 }
 if (isset($_POST['delete'])) {
     $pokemon_id = $_POST['pokemon_id'];
-    echo "ID del Pokémon a eliminar: " . $pokemon_id; // Añade esta línea
     deletePokemon($pokemon_id);
     header('Location: ../index.php');
     exit();
 }
+if (isset($_POST['update'])) {
+   
+    $pokemon_id = $_POST['pokemon_id'];
+    updatePokemon($pokemon_id); 
+   // header('Location: ../administrar/modificar.php');
+    header('Location: ../index.php');
+    exit();
+}
+if (isset($_POST['select'])) {
+    $pokemon_id = $_POST['pokemon_id'];
+    $pokemon = selectCromosPorId($pokemon_id);
+    // Redirige a la página que muestra los datos, pasando el ID como parámetro GET
+    header('Location: ../administrar/modificar.php?id=' . $pokemon_id);
+    exit();
+}
 
+// if (isset($_POST['select'])) {
+   
+//     $pokemon_id = $_POST['pokemon_id'];
+//     selectCromosPorId($pokemon_id); 
+//     header('Location: ../administrar/modificar.php');
+//    // header('Location: ../index.php');
+//     exit();
+// }
 ?>

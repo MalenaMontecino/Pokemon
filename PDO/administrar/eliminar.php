@@ -76,7 +76,8 @@ $cromos = selectCromos();
             foreach ($pokemonAgrupados as $grupo) { ?>
                 <div class="col-12 col-md-6 col-lg-3 mb-4"> <!-- responsive -->
                     <div class="card h-100">
-                        <form action="../phpControllers/cromosController.php" method="POST">
+                       
+                        <form  action="../phpControllers/cromosController.php" method="POST">
                             <h5 id='nombrePokemon' style="background-color:rgb(221, 237, 250);" class="card-title text-center p-3">
                                 <?php echo $grupo[0]['nombre']; ?>
                             </h5>
@@ -101,15 +102,17 @@ $cromos = selectCromos();
                                 <p class="card-text"><strong>Región:</strong>
                                     <?php echo $grupo[0]['nombreRegion']; ?>
                                 </p>
-                            
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+                                    <input type="hidden" name="pokemon_id" value="<?php echo $grupo[0]['id']; ?>">
+                                    <button type="submit" name="select" class="btn btn-primary  me-md-2">Modificar</button>
+                                    <button type="submit" name="delete" class="btn btn-danger " onclick="return confirm('¿Estás seguro de que deseas eliminar este Pokémon [<?php echo $grupo[0]['id']; ?>]?')">Eliminar</button>
+                                </div>
                             </div>
                         </form>
-                        <div class="card-footer">
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
-                                <button type="submit" name="update" class="btn btn-primary  me-md-2">Modificar</button>
-                                <button type="submit" name="delete" class="btn btn-danger ">Eliminar</button>
-                            </div>
-                        </div>
+
                     </div>
 
                 </div>
