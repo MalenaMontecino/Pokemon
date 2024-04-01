@@ -43,8 +43,9 @@ function selectCromos()
     return $resultado;
 }
 
-function selectTiposPokemon(){
-    
+function selectTiposPokemon()
+{
+
     $conexion = openBd();
 
     // $sentenciaText = "SELECT * FROM pokemon_db.cromos;";
@@ -66,7 +67,7 @@ function selectTiposPokemon(){
 // function insertCromos($nombre, $descripcion, $imagen, $nombreTipos, $nombreRegion)
 // {
 //     $conexion = openBd();
-    
+
 //     // Inserta en la tabla cromos
 //     $sentenciaText =  "INSERT INTO cromos (nombre, descripcion, imagen) VALUES (:nombre, :descripcion, :imagen)";
 //     $sentencia = $conexion->prepare($sentenciaText);
@@ -100,7 +101,7 @@ function selectTiposPokemon(){
 function insertCromos($nombre, $descripcion, $imagen, $nombreRegion, $tipos)
 {
     $conexion = openBd();
-    
+
     // Inserta en la tabla cromos
     $sentenciaText =  "INSERT INTO cromos (nombre, descripcion, imagen) VALUES (:nombre, :descripcion, :imagen)";
     $sentencia = $conexion->prepare($sentenciaText);
@@ -118,7 +119,7 @@ function insertCromos($nombre, $descripcion, $imagen, $nombreRegion, $tipos)
     $sentencia->bindParam(':idCromo', $idCromo);
     $sentencia->bindParam(':nombreRegion', $nombreRegion);
     $sentencia->execute();
- 
+
     // Inserta los tipos en la tabla cromos_tipos
     foreach ($tipos as $tipo) {
         $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) VALUES (:idCromo, :idTipo)";
@@ -162,25 +163,47 @@ function insertCromos($nombre, $descripcion, $imagen, $nombreRegion, $tipos)
 //         $sentencia->execute();
 
 //         $conexion = closeBd();
+// // }
+// function deletePokemon($pokemon_id)
+// {
+//     echo "La función deletePokemon() se está ejecutando."; // Añade esta línea
+//     try {
+        
+//         $conexion = openBd();
+//         $sentenciaText = "DELETE from cromos where id = :id;";
+
+//         $sentencia = $conexion->prepare($sentenciaText);
+//         $sentencia->bindParam(':id', $pokemon_id);
+//         $sentencia->execute();
+
+//         $conexion = closeBd();
+//     } catch (PDOException $e) {
+//         echo "Error al ejecutar la consulta: " . $e->getMessage();
+//     }
 // }
+// function deleteCromo($id)
+// {
+//     $conexion = openBd();
+//     $sentenciaText = "DELETE from cromos where id = :id;";
 
-function deleteCromo($id){
-    $conexion = openBd();
-    $sentenciaText = "DELETE from cromos where id = :id;";
+//     $sentencia = $conexion->prepare($sentenciaText);
+//     $sentencia->bindParam(':id', $id);
+//     $sentencia->execute();
 
-    $sentencia = $conexion->prepare($sentenciaText);
-    $sentencia->bindParam(':id', $id);
-    $sentencia->execute();
+//     $conexion = closeBd();
+// }
+function deletePokemon($pokemon_id)
+{
+    echo "ID del Pokémon a eliminar: " . $pokemon_id;
 
-    $conexion = closeBd();
+    try {
+        $conexion = openBd();
+        $sentenciaText = "DELETE FROM cromos WHERE id = :id";
+        $sentencia = $conexion->prepare($sentenciaText);
+        $sentencia->bindParam(':id', $pokemon_id);
+        $sentencia->execute();
+        // No es necesario cerrar la conexión aquí, se cerrará automáticamente al final del script
+    } catch (PDOException $e) {
+        echo "Error al ejecutar la consulta: " . $e->getMessage();
+    }
 }
-
-
-
-
-
-
-
-
-
-?>
