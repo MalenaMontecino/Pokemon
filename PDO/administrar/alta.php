@@ -116,7 +116,7 @@ $tipos = selectTiposPokemon();
                 </div>
                 <!-- botón -->
                 <div style="float:right; margin-bottom:5%;"> <!-- para que me centre el botón -->
-                    <button type="submit" name="insert" class="btn btn-outline-primary">Dar de alta</button>
+                    <button type="submit" name="insert" class="btn btn-light">Dar de alta</button>
                 </div> <br><br>
 
 

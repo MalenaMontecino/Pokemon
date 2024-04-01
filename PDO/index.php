@@ -86,7 +86,7 @@ $cromos = selectCromos();
                     <img src="images/imgPokemon/<?php echo $grupo[0]['imagen']; ?>" class="card-img-left"
                         alt="<?php echo $grupo[0]['nombre']; ?>">
                     <div class="card-body">
-                        <p class="card-text"><strong>ID:</strong>
+                        <p class="card-text" ><strong>ID:</strong>
                             <?php echo $grupo[0]['id']; ?>
                         </p>
                         <p class="card-text"><strong>Tipo:</strong>

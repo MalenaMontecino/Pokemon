@@ -128,13 +128,14 @@ $pokemons = selectCromosPorId($pokemon_id);
                     <!-- Imagen  -->
                     <div class="mb-5">
                         <label for="formFile" class="form-label">Seleccionar Imagen</label>
+                        <img src="<?php echo $grupo[0]['imagen'] ?>" >
                         <input name="imagen" class="form-control" type="file" id="formFile" value=" <?php echo $grupo[0]['imagen'] ?>">
                     </div>
 
                     <!-- botón -->
                     <div style="float:right; margin-bottom:5%;"> <!-- para que me centre el botón -->
                         <input type="hidden" name="pokemon_id" value="<?php echo $pokemon_id; ?>">
-                        <button type="submit" name="update" class="btn btn-primary  me-md-2">Modificar</button>
+                        <button type="submit" name="update" class="btn btn-light  me-md-2">Modificar</button>
                     </div> <br><br>
 
                 <?php } ?>
