@@ -22,7 +22,7 @@ $cromos = selectCromos();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #e3f2fd;">
 
         <div class="container-fluid">
             <!--LOGO-->
@@ -58,7 +58,7 @@ $cromos = selectCromos();
 
     <!-- CARDS -->
     <div class="container mt-5 mb-5">
-        <div class="row">
+        <div class="row" style="margin-top:120px;">
             <?php
             // Creamos un array para almacenar temporariamente los Pokémon agrupados por ID
             $pokemonAgrupados = array();

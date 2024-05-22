@@ -118,9 +118,16 @@ function insertCromos($nombre, $descripcion, $imagen, $nombreRegion, $tipos)
 
     $conexion = closeBd();
 }
+function obtenerTiposActuales($conexion, $pokemon_id) {
+    $sentenciaText = "SELECT id_tipo FROM cromos_tipos WHERE id_cromo = :id";
+    $sentencia = $conexion->prepare($sentenciaText);
+    $sentencia->bindParam(':id', $pokemon_id);
+    $sentencia->execute();
+    return $sentencia->fetchAll(PDO::FETCH_COLUMN);
+}
 
-function updatePokemon($pokemon_id, $nombre, $descripcion, $imagen, $nombreRegion, $tipos)
-{
+function updatePokemon($pokemon_id, $nombre, $descripcion, $imagen, $nombreRegion, $tipos) {
+  //  error_log(print_r($pokemon_id, $nombre, $descripcion, $imagen, $nombreRegion, $tipos));
     try {
         $conexion = openBd();
 
@@ -133,35 +140,57 @@ function updatePokemon($pokemon_id, $nombre, $descripcion, $imagen, $nombreRegio
         $sentencia->bindParam(':id', $pokemon_id);
         $sentencia->execute();
 
-        // Actualizar la región en la tabla cromos_regiones
-        $sentenciaText = "UPDATE cromos_regiones SET id_region = (SELECT id FROM regiones WHERE nombreRegion = :nombreRegion) WHERE id_cromo = :id";
-        $sentencia = $conexion->prepare($sentenciaText);
-        $sentencia->bindParam(':nombreRegion', $nombreRegion);
-        $sentencia->bindParam(':id', $pokemon_id);
-        $sentencia->execute();
-
-        // Eliminar los tipos existentes en la tabla cromos_tipos relacionados con el Pokémon
-        $sentenciaText = "DELETE FROM cromos_tipos WHERE id_cromo = :id";
-        $sentencia = $conexion->prepare($sentenciaText);
-        $sentencia->bindParam(':id', $pokemon_id);
-        $sentencia->execute();
-
-        // Insertar los nuevos tipos en la tabla cromos_tipos
-        foreach ($tipos as $tipo) {
-            $sentenciaText = "INSERT INTO cromos_tipos (id_cromo, id_tipo) VALUES (:idCromo, :idTipo)";
+        // Actualizar la región solo si se proporciona un nuevo valor
+        if ($nombreRegion !== "default") {
+            $sentenciaText = "UPDATE cromos_regiones SET id_region = (SELECT id FROM regiones WHERE nombreRegion = :nombreRegion) WHERE id_cromo = :id";
             $sentencia = $conexion->prepare($sentenciaText);
-            $sentencia->bindParam(':idCromo', $pokemon_id);
-            $sentencia->bindParam(':idTipo', $tipo);
+            $sentencia->bindParam(':nombreRegion', $nombreRegion);
+            $sentencia->bindParam(':id', $pokemon_id);
             $sentencia->execute();
         }
 
-        echo "Pokémon actualizado correctamente.";
+        // Obtener los tipos actuales del Pokémon
+        $tiposActuales = obtenerTiposActuales($conexion, $pokemon_id);
 
-        // No es necesario cerrar la conexión aquí, se cerrará automáticamente al final del script
+        // Convertir los arrays a sets para comparar
+        $tiposNuevos = array_filter($tipos, function($tipo) {
+            return $tipo !== 'default';
+        });
+        $tiposNuevosSet = array_flip($tiposNuevos);
+        $tiposActualesSet = array_flip($tiposActuales);
+
+        // Calcular los tipos a añadir y los tipos a eliminar
+        $tiposAEliminar = array_diff_key($tiposActualesSet, $tiposNuevosSet);
+        $tiposAAnadir = array_diff_key($tiposNuevosSet, $tiposActualesSet);
+
+        // Eliminar los tipos que ya no están en la lista
+        if (!empty($tiposAEliminar)) {
+            $sentenciaDelete = "DELETE FROM cromos_tipos WHERE id_cromo = :id AND id_tipo = :id_tipo";
+            $sentencia = $conexion->prepare($sentenciaDelete);
+            $sentencia->bindParam(':id', $pokemon_id);
+            foreach ($tiposAEliminar as $id_tipo => $_) {
+                $sentencia->bindParam(':id_tipo', $id_tipo);
+                $sentencia->execute();
+            }
+        }
+
+        // Añadir los nuevos tipos
+        if (!empty($tiposAAnadir)) {
+            $sentenciaInsert = "INSERT INTO cromos_tipos (id_cromo, id_tipo) VALUES (:idCromo, :idTipo)";
+            $sentencia = $conexion->prepare($sentenciaInsert);
+            $sentencia->bindParam(':idCromo', $pokemon_id);
+            foreach ($tiposAAnadir as $id_tipo => $_) {
+                $sentencia->bindParam(':idTipo', $id_tipo);
+                $sentencia->execute();
+            }
+        }
+
+        closeBd($conexion);
     } catch (PDOException $e) {
-        echo "Error al ejecutar la consulta: " . $e->getMessage();
+        echo "Error: " . $e->getMessage();
     }
 }
+
 
 function deletePokemon($pokemon_id)
 {
