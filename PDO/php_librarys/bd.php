@@ -126,6 +126,19 @@ function obtenerTiposActuales($conexion, $pokemon_id) {
     return $sentencia->fetchAll(PDO::FETCH_COLUMN);
 }
 
+
+//EN ESTA SE GUARDAN LOS ANTERIORES PERO NO FUNCIONA LA MODIFICACIÓN
+// function obtenerTiposActuales($conexion, $pokemon_id) {
+//     $sentenciaText = "SELECT tipos.nombreTipo FROM cromos_tipos 
+//                       JOIN tipos ON cromos_tipos.id_tipo = tipos.id 
+//                       WHERE cromos_tipos.id_cromo = :id_cromo";
+//     $sentencia = $conexion->prepare($sentenciaText);
+//     $sentencia->bindParam(':id_cromo', $pokemon_id);
+//     $sentencia->execute();
+//     return $sentencia->fetchAll(PDO::FETCH_COLUMN);
+// }
+
+
 function updatePokemon($pokemon_id, $nombre, $descripcion, $imagen, $nombreRegion, $tipos) {
   //  error_log(print_r($pokemon_id, $nombre, $descripcion, $imagen, $nombreRegion, $tipos));
     try {
@@ -151,14 +164,16 @@ function updatePokemon($pokemon_id, $nombre, $descripcion, $imagen, $nombreRegio
 
         // Obtener los tipos actuales del Pokémon
         $tiposActuales = obtenerTiposActuales($conexion, $pokemon_id);
-
+        var_dump($tiposActuales); // resultado: array(2) { [0]=> int(2) [1]=> int(16) } 
+       die("hola");
+       
         // Convertir los arrays a sets para comparar
         $tiposNuevos = array_filter($tipos, function($tipo) {
             return $tipo !== 'default';
         });
         $tiposNuevosSet = array_flip($tiposNuevos);
         $tiposActualesSet = array_flip($tiposActuales);
-
+     
         // Calcular los tipos a añadir y los tipos a eliminar
         $tiposAEliminar = array_diff_key($tiposActualesSet, $tiposNuevosSet);
         $tiposAAnadir = array_diff_key($tiposNuevosSet, $tiposActualesSet);
