@@ -65,8 +65,10 @@ $cromos = selectCromos();
             foreach ($cromos as $cromo) {
                 $pokemonId = $cromo['id'];
                 if (!isset($pokemonAgrupados[$pokemonId])) {
+                    //si no existe inicia un nuevo array para ese id
                     $pokemonAgrupados[$pokemonId] = array();
                 }
+                //agrega el cromo a su array correspondient
                 $pokemonAgrupados[$pokemonId][] = $cromo;
             }
 

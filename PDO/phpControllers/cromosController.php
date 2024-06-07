@@ -19,7 +19,9 @@ if (isset($_POST['delete'])) {
     deletePokemon($pokemon_id);
     header('Location: ../index.php');
     exit();
-}if (isset($_POST['update'])) {
+}
+
+if (isset($_POST['update'])) {
     $pokemon_id = $_POST['pokemon_id'];
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];

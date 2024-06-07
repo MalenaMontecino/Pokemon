@@ -51,7 +51,7 @@ $tipos = selectTiposPokemon();
             <h1>Nuevo Pokémon</h1>
         </div>
         <div class="card-body">
-            <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px; background-color: white;" action="../phpControllers/cromosController.php" method="POST" enctype="multipart/form-data">
+            <form id="miFormulario" class="mx-auto mt-5" style="max-width: 800px; background-color: white;" action="../phpControllers/cromosController.php" method="POST" enctype="multipart/form-data"> <!--tipo file-->
                 <!-- nombre -->
                 <div class="form-floating mb-3">
                     <input type="text" name="nombre" class="form-control" id="nombre" placeholder="n">

@@ -4,7 +4,7 @@ require_once('../php_librarys/bd.php');
 // Obtener tipos de la base de datos
 $tiposDB = selectTiposPokemon();
 
-$pokemon_id = $_GET['id'];
+$pokemon_id = $_GET['id']; //url
 $pokemons = selectCromosPorId($pokemon_id);
 ?>
 
@@ -75,6 +75,7 @@ $pokemons = selectCromosPorId($pokemon_id);
                             <select name="nombreTipo[]" id="tipo2" class="form-select mt-4">
                                 <option value="default" selected>
                                     <?php 
+                                    //comprobar si tiene 2o tipo
                                     if (isset($tipos[1]) && $tipos[1] !== null) {
                                         echo $tipos[1];
                                     } else {
