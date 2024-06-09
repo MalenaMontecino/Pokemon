@@ -124,9 +124,10 @@ function selectTiposPokemon()
 
 function insertCromos($nombre, $descripcion, $imagen, $nombreRegion, $tipos)
 {
-    $conexion = openBd();
+ 
+    try {  
+         $conexion = openBd();
 
-    try {
         // Iniciar la transacción
         $conexion->beginTransaction();
 
