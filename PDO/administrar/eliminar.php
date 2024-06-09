@@ -55,7 +55,9 @@ $cromos = selectCromos();
         </div>
     </nav>
 
-
+    <div>
+    <!-- errores francisco -->
+         <?php require_once('../php_partials/mensajes.php');?> 
     <!-- CARDS -->
     <div class="container mt-5 mb-5">
         <div class="row" style="margin-top:120px;">
@@ -124,7 +126,7 @@ $cromos = selectCromos();
             <?php } ?>
         </div>
     </div>
-
+                                </div>
 </body>
 
 </html>

@@ -56,9 +56,11 @@ $cromos = selectCromos();
         </div>
     </nav>
     <div class="container mt-5 mb-5" >
+        <!-- errores francisco -->
+        <?php require_once('./php_partials/mensajes.php');?> 
         <div class="row"style="margin-top:120px;">
             <?php
-            // Creamos un array para almacenar temporariamente los Pokémon agrupados por ID
+            // Creo un array para almacenar temporariamente los Pokémon agrupados por ID
             $pokemonAgrupados = array();
 
             // Iteramos sobre los Pokémon y los agrupamos por ID

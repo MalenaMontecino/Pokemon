@@ -45,8 +45,14 @@ $tipos = selectTiposPokemon();
             </div>
         </div>
     </nav>
+<div>
+    <!-- errores francisco -->
+         <?php require_once('../php_partials/mensajes.php');?> 
+
 
     <div class="card mx-auto m-5" style="width:60%;">
+         
+
         <div class="card-header">
             <h1>Nuevo Pokémon</h1>
         </div>
@@ -109,7 +115,7 @@ $tipos = selectTiposPokemon();
             </form>
         </div>
     </div>
-
+</div>
 </body>
 
 </html>
